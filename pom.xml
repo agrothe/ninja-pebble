@@ -92,11 +92,11 @@
     </build>
 
     <scm>
-        <url>https://github.com/jjfidalgo/ninja-pebble</url>
+        <url>git@github.com:jjfidalgo/ninja-pebble.git</url>
         <connection>scm:git@github.com:jjfidalgo/ninja-pebble.git</connection>
         <developerConnection>scm:git@github.com:jjfidalgo/ninja-pebble.git</developerConnection>
     </scm>
-
+    
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/jjfidalgo/ninja-pebble/issues</url>
@@ -197,4 +197,13 @@
             </build>
         </profile>
     </profiles>
+
+    <developers>
+        <developer>
+            <name>Juan Fidalgo</name>
+            <email>jjfidalgo@gmail.com</email>
+            <organization></organization>
+            <organizationUrl>https://github.com/jjfidalgo/ninja-pebble</organizationUrl>
+        </developer>
+    </developers>
 </project>
