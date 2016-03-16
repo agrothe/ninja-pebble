@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>{% block title %}My Website{% endblock %}</title>
+
+        <link href="/assets/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/webjars/bootstrap/3.3.4/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="/assets/css/custom.css" rel="stylesheet">
+    </head>
+    <body>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer %}
+        Copyright 2016
+        {% endblock %}
+    </div>
+    </body>
+</html>

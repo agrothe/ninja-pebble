@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (C) 2012 the original author or authors.
@@ -14,11 +15,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 
--->
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
     <modelVersion>4.0.0</modelVersion>
 
@@ -27,29 +24,42 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Pebble support for Ninja</name>
+    <name>ninja-pebble</name>
     <url>https://github.com/jjfidalgo/ninja-pebble</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <siteProjectVersion>${project.version}</siteProjectVersion>
+
         <ninja.version>5.3.1</ninja.version>
+        <pebble.version>2.1.0</pebble.version>
+        <guava.version>19.0</guava.version>
+        <guice.version>4.0</guice.version>
+        <slf4j.version>1.7.6</slf4j.version>
+        <junit.version>4.12</junit.version>
+        <mockito.version>1.10.19</mockito.version>
+
+        <sonar.plugin.version>3.0.1</sonar.plugin.version>
+
         <java.version>1.7</java.version>
     </properties>
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar.plugin.version}</version>
+            </plugin>
+        </plugins>
     </build>
 
     <scm>
@@ -62,6 +72,27 @@
         <system>GitHub</system>
         <url>https://github.com/jjfidalgo/ninja-pebble/issues</url>
     </issueManagement>
+
+    <modules>
+        <module>ninja-pebble-module</module>
+        <module>ninja-pebble-demo</module>
+  </modules>
+
+    <dependencies>
+        <!-- Testing dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <profiles>
         <!-- Do a license check by running : mvn -P license license:check -->

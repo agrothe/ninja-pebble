@@ -1,0 +1,9 @@
+{% extends "views/layout/base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <h1 class="title"> Home </h1>
+    <p> {{ i18n("conf/messages","hello.world") }}!. </p>
+    <p> My name is {{ name }} </p>
+{% endblock %}
