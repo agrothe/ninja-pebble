@@ -40,8 +40,6 @@
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
 
-        <sonar.plugin.version>3.0.1</sonar.plugin.version>
-
         <java.version>1.7</java.version>
     </properties>
     <build>
@@ -53,11 +51,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>${sonar.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
