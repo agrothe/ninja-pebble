@@ -189,7 +189,7 @@ public class TemplateEnginePebble implements TemplateEngine {
     /**
      * Put the context path into the map
      */
-    protected void insertContextPath(Context context, Map map) {
+    private void insertContextPath(Context context, Map map) {
 
         String contextPath = context.getContextPath();
         map.put("contextPath", contextPath);
@@ -200,7 +200,7 @@ public class TemplateEnginePebble implements TemplateEngine {
     /**
      * Set language from framework. You can access it in the templates as {lang}
      */
-    protected void insertLanguageProperty(Context context, Result result, Map map) {
+    private void insertLanguageProperty(Context context, Result result, Map map) {
 
         Optional<String> oLanguage = lang.getLanguage(context, Optional.of(result));
         if (oLanguage.isPresent()) {
@@ -216,7 +216,7 @@ public class TemplateEnginePebble implements TemplateEngine {
      * values by their key in the cookie
      *
      */
-    protected void insertSessionProperties(Context context, Map map) {
+    private void insertSessionProperties(Context context, Map map) {
 
         if (!context.getSession().isEmpty()) {
             Map<String, String> sessionData = context.getSession().getData();
@@ -237,7 +237,7 @@ public class TemplateEnginePebble implements TemplateEngine {
      *
      * get keys via {flash.KEYNAME}
      */
-    protected void insertFlashProperties(Context context, Result result, Map map) {
+    private void insertFlashProperties(Context context, Result result, Map map) {
 
         Map<String, String> flashCookieMap = Maps.newHashMap();
         Set<Entry<String, String>> currentFlashCookieDataSet = context.getFlashScope().getCurrentFlashCookieData().entrySet();
