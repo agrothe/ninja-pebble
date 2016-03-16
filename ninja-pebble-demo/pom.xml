@@ -36,7 +36,9 @@
     <!-- uncomment the dependency for ninja-servlet -->
     <packaging>jar</packaging>
 
-    <url>http://www.ninjaframework.org</url>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Ninja pebble integration demo</description>
+    <url>https://github.com/jjfidalgo/ninja-pebble</url>
 
     <properties>
         <ninja.version>5.4.0</ninja.version>

@@ -26,7 +26,8 @@
     <version>0.1.0</version>
     <packaging>pom</packaging>
 
-    <name>ninja-pebble</name>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Ninja pebble integration</description>
     <url>https://github.com/jjfidalgo/ninja-pebble</url>
 
     <properties>

@@ -31,7 +31,8 @@
     <artifactId>ninja-pebble-module</artifactId>
     <packaging>jar</packaging>
 
-    <name>ninja-pebble-module</name>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Ninja pebble integration module</description>
     <url>https://github.com/jjfidalgo/ninja-pebble</url>
 
     <dependencies>
