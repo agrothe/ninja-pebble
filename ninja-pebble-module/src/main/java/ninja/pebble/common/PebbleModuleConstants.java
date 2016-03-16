@@ -17,7 +17,8 @@
 package ninja.pebble.common;
 
 public interface PebbleModuleConstants {
-  String CONTENT_TYPE = "text/html";
+
+  String CONTENT_TYPE_MANAGED_BY_MODULE = "text/html";
   String PEBBLE_FILE_SUFFIX = ".html";
-  String LOCATION_VIEW_HTML_INTERNAL_SERVER_ERROR = "views/error/500internalServerError.html";
+  String LOCATION_HTML_INTERNAL_SERVER_ERROR_VIEW = "views/error/500internalServerError.html";
 }

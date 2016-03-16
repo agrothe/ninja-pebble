@@ -268,7 +268,7 @@ public class TemplateEnginePebble implements TemplateEngine {
         PebbleTemplate compiledTemplate = null;
 
         try {
-            compiledTemplate = engine.getTemplate(PebbleModuleConstants.LOCATION_VIEW_HTML_INTERNAL_SERVER_ERROR);
+            compiledTemplate = engine.getTemplate(PebbleModuleConstants.LOCATION_HTML_INTERNAL_SERVER_ERROR_VIEW);
         } catch (PebbleException intEx) {
             logger.error("Error getting error template", intEx);
             throw new IllegalStateException(intEx);
@@ -292,7 +292,7 @@ public class TemplateEnginePebble implements TemplateEngine {
 
     @Override
     public String getContentType() {
-        return PebbleModuleConstants.CONTENT_TYPE;
+        return PebbleModuleConstants.CONTENT_TYPE_MANAGED_BY_MODULE;
     }
 
     @Override
