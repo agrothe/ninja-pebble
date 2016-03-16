@@ -167,7 +167,8 @@
         </profile>
 
         <!-- To sign artifacts before releasing to repository  -->
-        <!-- Enable when using mvn release:perform -->
+        <!-- Enable when using "mvn release:perform" -->
+        <!-- To sign when no releasing run "mvn clean install -Prelease-sign-artifacts" -->
         <profile>
             <id>release-sign-artifacts</id>
             <activation>
