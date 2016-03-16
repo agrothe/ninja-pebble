@@ -21,7 +21,7 @@
     
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.ninjaframework</groupId>
+    <groupId>org.theicenet</groupId>
     <artifactId>ninja-pebble</artifactId>
     <version>0.1.0</version>
     <packaging>pom</packaging>
@@ -96,7 +96,7 @@
         <connection>scm:git@github.com:jjfidalgo/ninja-pebble.git</connection>
         <developerConnection>scm:git@github.com:jjfidalgo/ninja-pebble.git</developerConnection>
     </scm>
-    
+
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/jjfidalgo/ninja-pebble/issues</url>

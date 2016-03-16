@@ -24,8 +24,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+        <groupId>org.theicenet</groupId>
         <artifactId>ninja-pebble</artifactId>
-        <groupId>org.ninjaframework</groupId>
         <version>0.1.0</version>
     </parent>
 
