@@ -16,37 +16,34 @@
 
 package controllers;
 
-
 import com.google.common.collect.Maps;
+import ninja.NinjaDocTester;
 import ninja.NinjaTest;
 import org.apache.http.HttpResponse;
-import org.junit.Test;
-
-import ninja.NinjaDocTester;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
-import org.hamcrest.CoreMatchers;
+import org.junit.Test;
 
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ApiControllerTest extends NinjaTest {
-    
-    final String URL_INDEX = "/";
-    
-    @Test
-    public void testWhenRequestingIndexThenEverythingIsProperlyRendered() {
+public class AssetsControllerTest extends NinjaTest {
 
-        // Given
-        Map<String, String> headers = Maps.newHashMap();
+	final String URL_ASSEST_DXF_MIMETYPE = "assets/files/test_for_mimetypes.dxf";
 
-        // When
-        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_INDEX, headers);
+	@Test
+	public void testWhenRequestingAssetThenReturnsTheProperMimeType() {
+		// Given
+		Map<String, String> headers = Maps.newHashMap();
 
-        // Then
-        assertThat(result, containsString("My name is " + ApplicationController.NAME));
+		// When
+		HttpResponse httpResponse = ninjaTestBrowser.makeRequestAndGetResponse(getServerAddress() + URL_ASSEST_DXF_MIMETYPE, headers);
 
-    }
+		// Then
+		assertThat(httpResponse.getHeaders("Content-Type")[0].getValue(), is(equalTo("application/dxf; charset=UTF-8")));
+	}
+	
 }

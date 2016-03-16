@@ -16,48 +16,60 @@
 
 package controllers;
 
+import com.google.common.collect.Maps;
 import ninja.NinjaDocTester;
+import ninja.NinjaTest;
 import org.doctester.testbrowser.Request;
 import org.doctester.testbrowser.Response;
 import org.junit.Test;
 
+import java.util.Map;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 
-public class I18nControllerTest extends NinjaDocTester {
+public class I18nControllerTest extends NinjaTest {
 
-    String URL_INDEX = "/i18n";
+    final String URL_I18N = "/i18n";
 
-    String TEXT_EN = "Hello World";
-    String TEXT_ES = "Hola Mundo";
+    final String TEXT_EN = "Hello World";
+    final String TEXT_ES = "Hola Mundo";
 
     @Test
     public void testWhenAcceptLanguageHeaderIsSentAndExistsFileForThatLanguageThenTheExistingFileIsUsed() {
+        // Given
+        Map<String, String> headers = Maps.newHashMap();
+        headers.put("Accept-Language", "es-ES");
 
-        Response response = makeRequest(
-            Request.GET().addHeader("Accept-Language", "es-ES").url(
-                testServerUrl().path(URL_INDEX)));
+        // When
+        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_I18N, headers);
 
-        assertThat(response.payload, containsString(TEXT_ES));
+        // Then
+        assertThat(result, containsString(TEXT_ES));
     }
 
     @Test
     public void testWhenAcceptLanguageHeaderIsNotSentThenDefaultLanguageFileIsUsed() {
+        // Given
+        Map<String, String> headers = Maps.newHashMap();
 
-        Response response = makeRequest(
-            Request.GET().url(
-                testServerUrl().path(URL_INDEX)));
+        // When
+        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_I18N, headers);
 
-        assertThat(response.payload, containsString(TEXT_EN));
+        // Then
+        assertThat(result, containsString(TEXT_EN));
     }
 
     @Test
     public void testWhenAcceptLanguageHeaderIsSentAndDoesNotExistFileForThatLanguageThenDefaultLanguageFileIsUsed() {
+        // Given
+        Map<String, String> headers = Maps.newHashMap();
+        headers.put("Accept-Language", "de-DE");
 
-        Response response = makeRequest(
-            Request.GET().addHeader("Accept-Language", "de-DE").url(
-                testServerUrl().path(URL_INDEX)));
+        // When
+        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_I18N, headers);
 
-        assertThat(response.payload, containsString(TEXT_EN));
+        // Then
+        assertThat(result, containsString(TEXT_EN));
     }
 }
