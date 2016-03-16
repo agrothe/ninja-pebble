@@ -17,6 +17,7 @@
 package conf;
 
 
+import controllers.I18nController;
 import ninja.AssetsController;
 import ninja.Router;
 import ninja.application.ApplicationRoutes;
@@ -24,17 +25,20 @@ import controllers.ApplicationController;
 
 public class Routes implements ApplicationRoutes {
 
+    private static final String INDEX_METHOD = "index";
+
     @Override
-    public void init(Router router) {  
-        
-        router.GET().route("/").with(ApplicationController.class, "index");
- 
+    public void init(Router router) {
+
+        router.GET().route("/").with(ApplicationController.class, INDEX_METHOD);
+        router.GET().route("/i18n").with(I18nController.class, INDEX_METHOD);
+
         ///////////////////////////////////////////////////////////////////////
         // Assets (pictures / javascript)
         ///////////////////////////////////////////////////////////////////////    
         router.GET().route("/assets/webjars/{fileName: .*}").with(AssetsController.class, "serveWebJars");
         router.GET().route("/assets/{fileName: .*}").with(AssetsController.class, "serveStatic");
-        
+
         ///////////////////////////////////////////////////////////////////////
         // Index / Catchall shows index page
         ///////////////////////////////////////////////////////////////////////
