@@ -174,6 +174,10 @@
            As said If <autoReleaseAfterClose> is set to true then "mvn clean deploy -Prelease" releases to OSSRH staging and automatically to Maven Central Repository
            in one go.
 
+           SNAPSHOT versions released cannot be promoted to Central Repository. If you wish your users to consume your SNAPSHOT versions,
+           they would need to add the snapshot repository to their Nexus Repository Manager, settings.xml, or pom.xml.
+           Successfully deployed SNAPSHOT versions will be found in https://oss.sonatype.org/content/repositories/snapshots/
+
            More info,
 
                 http://central.sonatype.org/pages/ossrh-guide.html
