@@ -64,30 +64,6 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -122,6 +98,15 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <developers>
+        <developer>
+            <name>Juan Fidalgo</name>
+            <email>jjfidalgo@gmail.com</email>
+            <organization></organization>
+            <organizationUrl>https://github.com/jjfidalgo/ninja-pebble</organizationUrl>
+        </developer>
+    </developers>
 
     <profiles>
         <!-- Do a license check by running : mvn -P license license:check -->
@@ -166,23 +151,78 @@
                 </plugins>
             </build>
         </profile>
+        <!-- Profile to be use when releasing to OSSRH -->
+        <!-- To release to OSSRH staging use
 
-        <!-- To sign artifacts before releasing to repository  -->
-        <!-- Enable when using "mvn release:perform" -->
-        <!-- To sign when no releasing run "mvn clean install -Prelease-sign-artifacts" -->
+                    "mvn clean deploy -Prelease"
+
+             - If <autoReleaseAfterClose> is set to false it only release to OSSRH staging
+             - If <autoReleaseAfterClose> is set to true it releases to OSSRH staging and automatically to Maven Central Repository
+
+           If release has been done to OSSRH it can be manually inspect the staging repository in the Nexus Repository Manager on,
+
+                       https://oss.sonatype.org/service/local/staging/deploy/maven2/
+
+           It can be trigger a release of the staging repository later with
+
+                    "mvn nexus-staging:release -Prelease"
+
+           If you find something went wrong you can drop the staging repository with
+
+                    "mvn nexus-staging:drop -Prelease"
+
+           As said If <autoReleaseAfterClose> is set to true then "mvn clean deploy -Prelease" releases to OSSRH staging and automatically to Maven Central Repository
+           in one go.
+
+           More info,
+
+                http://central.sonatype.org/pages/ossrh-guide.html
+                http://central.sonatype.org/pages/apache-maven.html
+        -->
         <profile>
-            <id>release-sign-artifacts</id>
-            <activation>
-                <property>
-                    <name>performRelease</name>
-                    <value>true</value>
-                </property>
-            </activation>
+            <id>release</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -193,17 +233,19 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.6</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
-
-    <developers>
-        <developer>
-            <name>Juan Fidalgo</name>
-            <email>jjfidalgo@gmail.com</email>
-            <organization></organization>
-            <organizationUrl>https://github.com/jjfidalgo/ninja-pebble</organizationUrl>
-        </developer>
-    </developers>
 </project>
