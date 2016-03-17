@@ -14,7 +14,7 @@ Setup
 1) Add the ninja-pebble dependency to your pom.xml:
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.jjfidalgo</groupId>
             <artifactId>ninja-pebble-module</artifactId>
             <version>0.1.0</version>
         </dependency>
