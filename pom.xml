@@ -23,7 +23,7 @@
 
     <groupId>com.github.jjfidalgo</groupId>
     <artifactId>ninja-pebble</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0-SNAPTSHOT</version>
     <packaging>pom</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -174,12 +174,17 @@
            As said If <autoReleaseAfterClose> is set to true then "mvn clean deploy -Prelease" releases to OSSRH staging and automatically to Maven Central Repository
            in one go.
 
+           After releasing to Central check the artifacts are on
+
+                    https://repo.maven.apache.org/maven2/com/github/jjfidalgo
+
            SNAPSHOT versions released cannot be promoted to Central Repository. If you wish your users to consume your SNAPSHOT versions,
            they would need to add the snapshot repository to their Nexus Repository Manager, settings.xml, or pom.xml.
            Successfully deployed SNAPSHOT versions will be found in https://oss.sonatype.org/content/repositories/snapshots/
 
            More info,
 
+                https://maven.apache.org/guides/mini/guide-central-repository-upload.html
                 http://central.sonatype.org/pages/ossrh-guide.html
                 http://central.sonatype.org/pages/apache-maven.html
         -->
