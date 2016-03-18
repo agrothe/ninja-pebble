@@ -37,7 +37,7 @@ public class DirectAccessControllerTest extends NinjaTest {
         String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_INDEX);
 
         // Then
-        assertThat(result, containsString("Direct access to template by " + ApplicationController.NAME));
+        assertThat(result, containsString("Direct access to template by " + DirectAccessController.NAME));
 
     }
 }
