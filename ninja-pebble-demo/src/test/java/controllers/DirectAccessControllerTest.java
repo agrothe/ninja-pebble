@@ -33,11 +33,8 @@ public class DirectAccessControllerTest extends NinjaTest {
     @Test
     public void testWhenDirectAccessToTemplateThenEverythingIsProperlyRendered() {
 
-        // Given
-        Map<String, String> headers = Maps.newHashMap();
-
         // When
-        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_INDEX, headers);
+        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_INDEX);
 
         // Then
         assertThat(result, containsString("Direct access to template by " + ApplicationController.NAME));

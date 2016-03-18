@@ -36,6 +36,7 @@ public class AssetsControllerTest extends NinjaTest {
 
 	@Test
 	public void testWhenRequestingAssetThenReturnsTheProperMimeType() {
+
 		// Given
 		Map<String, String> headers = Maps.newHashMap();
 

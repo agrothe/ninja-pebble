@@ -39,11 +39,8 @@ public class ApiControllerTest extends NinjaTest {
     @Test
     public void testWhenRequestingIndexThenEverythingIsProperlyRendered() {
 
-        // Given
-        Map<String, String> headers = Maps.newHashMap();
-
         // When
-        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_INDEX, headers);
+        String result = ninjaTestBrowser.makeRequest(getServerAddress() + URL_INDEX);
 
         // Then
         assertThat(result, containsString("My name is " + ApplicationController.NAME));
