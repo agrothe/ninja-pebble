@@ -26,7 +26,7 @@
     <parent>
         <groupId>com.github.jjfidalgo</groupId>
         <artifactId>ninja-pebble</artifactId>
-        <version>0.2.0-SNAPTSHOT</version>
+        <version>0.2.0</version>
     </parent>
 
     <artifactId>ninja-pebble-demo</artifactId>
