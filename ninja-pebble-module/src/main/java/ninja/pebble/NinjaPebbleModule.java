@@ -18,14 +18,27 @@ package ninja.pebble;
 
 import com.google.inject.AbstractModule;
 import com.mitchellbosecke.pebble.PebbleEngine;
+import com.mitchellbosecke.pebble.extension.Extension;
 import ninja.pebble.template.TemplateEnginePebble;
 
 public class NinjaPebbleModule extends AbstractModule {
 
+  private Extension extension;
+
+  public NinjaPebbleModule() {}
+
+  public NinjaPebbleModule(Extension extension) {
+    this.extension = extension;
+  }
+
   @Override
   protected void configure() {
 
-    bind(PebbleEngine.class).toProvider(PebbleEngineProvider.class);
+    if (extension == null) {
+      bind(PebbleEngine.class).toProvider(PebbleEngineProvider.class);
+    } else {
+      bind(PebbleEngine.class).toProvider(new PebbleEngineProvider(extension));
+    }
     bind(TemplateEnginePebble.class);
   }
 }

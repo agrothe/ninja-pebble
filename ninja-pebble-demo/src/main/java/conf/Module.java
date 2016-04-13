@@ -18,6 +18,7 @@ package conf;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
+import extensions.CustomExtension;
 import ninja.pebble.NinjaPebbleModule;
 
 
@@ -26,7 +27,7 @@ public class Module extends AbstractModule {
 
     @Override
     protected void configure() {
-        install(new NinjaPebbleModule());
+        install(new NinjaPebbleModule(new CustomExtension()));
 
     }
 

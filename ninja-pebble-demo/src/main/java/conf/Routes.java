@@ -18,6 +18,7 @@ package conf;
 
 
 import controllers.DirectAccessController;
+import controllers.FilterController;
 import controllers.I18nController;
 import ninja.AssetsController;
 import ninja.Router;
@@ -34,6 +35,7 @@ public class Routes implements ApplicationRoutes {
         router.GET().route("/").with(ApplicationController.class, INDEX_METHOD);
         router.GET().route("/i18n").with(I18nController.class, INDEX_METHOD);
         router.GET().route("/direct").with(DirectAccessController.class, INDEX_METHOD);
+        router.GET().route("/filter").with(FilterController.class, INDEX_METHOD);
 
         ///////////////////////////////////////////////////////////////////////
         // Assets (pictures / javascript)

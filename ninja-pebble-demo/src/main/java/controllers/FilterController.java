@@ -14,29 +14,21 @@
  * limitations under the License.
  */
 
-package ninja.pebble;
+package controllers;
 
-import com.google.inject.Provider;
-import com.mitchellbosecke.pebble.PebbleEngine;
-import com.mitchellbosecke.pebble.extension.Extension;
+import com.google.inject.Singleton;
+import ninja.Result;
+import ninja.Results;
 
-public class PebbleEngineProvider implements Provider<PebbleEngine> {
 
-    private Extension extension;
+@Singleton
+public class FilterController {
 
-    public PebbleEngineProvider() {}
+    public static final String NAME = "pebble-demo-case";
 
-    public PebbleEngineProvider(Extension extension) {
-        this.extension = extension;
-    }
+    public Result index() {
 
-    @Override
-    public PebbleEngine get() {
+        return Results.html().render("name", NAME);
 
-        if (extension == null) {
-            return new PebbleEngine.Builder().build();
-        } else {
-            return new PebbleEngine.Builder().extension(extension).build();
-        }
     }
 }
