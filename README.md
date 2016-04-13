@@ -16,7 +16,7 @@ Setup
         <dependency>
             <groupId>com.github.jjfidalgo</groupId>
             <artifactId>ninja-pebble-module</artifactId>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </dependency>
 
 2) Install the module in your conf.Module:
@@ -31,6 +31,25 @@ Setup
         ...
 
     }
+    
+   
+If you want to use any Pebble extension you must install the module in your conf.Module as follows
+
+    @Override
+    protected void configure() {
+
+        ...
+
+        install(new NinjaPebbleModule(new CustomExtension()));
+
+        ...
+
+    }
+    
+    
+Please refer to Pebble documentation about how to create your own Pebble extensions,
+
+http://www.mitchellbosecke.com/pebble/documentation/guide/extending-pebble
     
 3) All set. Start writing template in 'views' folder of your application.
 
