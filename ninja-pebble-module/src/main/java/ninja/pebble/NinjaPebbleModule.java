@@ -1,4 +1,4 @@
-/**
+/**Extension extension
  * Copyright (C) 2016 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,21 +23,21 @@ import ninja.pebble.template.TemplateEnginePebble;
 
 public class NinjaPebbleModule extends AbstractModule {
 
-  private Extension extension;
+  private Extension[] extensions;
 
   public NinjaPebbleModule() {}
 
-  public NinjaPebbleModule(Extension extension) {
-    this.extension = extension;
+  public NinjaPebbleModule(Extension... extensions) {
+    this.extensions = extensions;
   }
 
   @Override
   protected void configure() {
 
-    if (extension == null) {
+    if (extensions == null) {
       bind(PebbleEngine.class).toProvider(PebbleEngineProvider.class);
     } else {
-      bind(PebbleEngine.class).toProvider(new PebbleEngineProvider(extension));
+      bind(PebbleEngine.class).toProvider(new PebbleEngineProvider(extensions));
     }
     bind(TemplateEnginePebble.class);
   }
