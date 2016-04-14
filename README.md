@@ -46,6 +46,19 @@ If you want to use any Pebble extension you must install the module in your conf
 
     }
     
+To use multiple Pebble extension just install the NinjaPebble plugin passing to the constructor all Pebble extensions you want to configure,
+
+    @Override
+    protected void configure() {
+
+        ...
+
+        install(new NinjaPebbleModule(new CustomExtension(), new ThirdPartyPebbleExtension(), new AnotherPebbleExtension()));
+
+        ...
+
+    }
+
     
 Please refer to Pebble documentation about how to create your own Pebble extensions,
 

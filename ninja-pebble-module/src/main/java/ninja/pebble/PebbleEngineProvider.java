@@ -22,21 +22,21 @@ import com.mitchellbosecke.pebble.extension.Extension;
 
 public class PebbleEngineProvider implements Provider<PebbleEngine> {
 
-    private Extension extension;
+    private Extension[] extensions;
 
     public PebbleEngineProvider() {}
 
-    public PebbleEngineProvider(Extension extension) {
-        this.extension = extension;
+    public PebbleEngineProvider(Extension... extensions) {
+        this.extensions = extensions;
     }
 
     @Override
     public PebbleEngine get() {
 
-        if (extension == null) {
+        if (extensions == null) {
             return new PebbleEngine.Builder().build();
         } else {
-            return new PebbleEngine.Builder().extension(extension).build();
+            return new PebbleEngine.Builder().extension(extensions).build();
         }
     }
 }
