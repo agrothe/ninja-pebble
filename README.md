@@ -1,7 +1,8 @@
 Pebble template module for Ninja framework.
 ===========================================
-Forked from jjfidalgo/ninja-pebble. Adding config options so the underlying PebbleEngine can be configured with available options.
-===========================================
+- Forked from jjfidalgo/ninja-pebble. Adding config options so the underlying PebbleEngine can be configured with available options.
+
+
 Pebble (http://www.mitchellbosecke.com/pebble/home) is a java template template engine inspired by Twig. It separates itself from the crowd with it's inheritance feature and it's easy-to-read syntax. It ships with built-in autoescaping for security, and it includes integrated support for internationalization.
 
 This is an easly plugable module for Ninja web framework to write templates using Pebble template engine. Based on the [ninja-mustache](https://github.com/kpacha/ninja-mustache) module.
